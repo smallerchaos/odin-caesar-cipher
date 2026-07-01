@@ -29,10 +29,3 @@ end
 # If byte is not between 65 and 90 || 97 and 122, return as is
 # If byte is 90, wrap around to 65
 # If byte is 122, wrap around to 97
-
-# strip! to remove trailing and leading whitespace
- 
-#  if message.is_a? String == true && message.ascii_only? == true
-  # else
-  #   return "This isn't a string and cannot be encoded into a cipher."
-  # end
