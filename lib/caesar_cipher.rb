@@ -1,28 +1,24 @@
 def encode_to_caesar_cipher(string, number)
+  puts string
   string_bytes = string.bytes
   converted_bytes = string_bytes.map do |byte|
-    puts byte
-    if byte == 90
-      puts "last upper case letter"
-      65 + (number - 1)
-    elsif byte ==112
-      puts "last lower case letter"
-      97 + (number - 1)
+    if byte >= 65 && byte <= 90 && (byte + number) > 90
+      # Shifted upper case letter exceeds the end
+      64 + ((byte + number) - 90)
+    elsif byte >= 97 && byte <= 122 && (byte + number) > 122
+      # Shifted lower case letter exceeds the end
+      96 + ((byte + number) - 122)
     elsif byte >= 65 && byte <90 || byte >= 97 && byte < 122
-      puts "all other letters"
+      # Is a letter but doesn't exceed the end
       byte + number
     else
-      puts "It's NOT a letter"
+      # Not a letter
       byte
     end
   end
-  puts "=========="
-  print converted_bytes
-  puts "=========="
   caesar_cipher_string = converted_bytes.map do |byte|
     byte.chr
   end
-  print caesar_cipher_string
   puts caesar_cipher_string.join('')
   return caesar_cipher_string.join('')
 end
